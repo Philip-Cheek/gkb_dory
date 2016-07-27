@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Donation Check-In</title>
+	{% load staticfiles %}
+	
+	<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap-theme.css' %}">
+	<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+	<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
+	<script src="{% static 'bower_components/angular-route/angular-route.min.js' %}"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'bike_donations/styles/font-awesome-4.6.3/css/font-awesome.min.css' %}">
+	
+
+	<link rel="stylesheet" type="text/css" href="{% static 'donation_menu/styles/styles.css' %}">
+</head>
+<body>
+
+
+		<div id="header" class="row">
+			<img class="col-xs-2" src="{% static 'donation_menu/resources/logoThing.jpg' %}" />
+			<div id="h1-text" class="col-xs-10">
+					<h1>Inventory Management System</h1>
+			</div>
+		</div>
+
+
+
+
+
+		<div class="container">
+			<div id="menuOptions">
+
+
+
+				<h5>
+					Logged in as: {{request.user.username}}
+				</h5>
+
+					<a href="{% url 'check-in-bike' %}"> Bicycles</a>
+
+					<hr />
+					<a href="{% url 'check-in-other' %}">
+						Components / other
+					</a>
+					<hr />
+					<a href="{% url 'find-donation' %}">
+						Search inventory
+					</a>
+					<hr />
+				</div>
+
+
+				<a href="/logout" id="btn-logout" class="btn btn-lg col-xs-12">Logout</a>
+
+		</div>
+
+</body>
+</html>

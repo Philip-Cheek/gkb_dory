@@ -1,0 +1,39 @@
+#header-inv-page{
+	border-bottom:.2em solid rgb(0, 168, 80);
+	margin-top: -30px;
+}
+#header-inv-page h2{
+	/*display: inline-block;*/
+	color: rgb(0, 168, 80);
+	vertical-align: bottom;
+	margin-top: 70px;
+
+}
+
+.btn {
+	font-family: 'Verdana';
+	background: #116F3A;
+	border: 3px solid #116F3A;
+	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+	border-radius: 10px;
+	color: white;
+	letter-spacing: 1.28px;
+}
+
+.btn:hover, .btn:focus {
+
+	color: white;
+
+}
+
+#btn-search:active, #btn-back:active {
+	background: #58D68D;
+}
+
+#btn-delete {
+	background: #d9534f;
+	border: 3px solid #d9534f;
+}
+#btn-delete:active {
+	background: #c9302c;
+}

@@ -1,0 +1,119 @@
+<html ng-app = 'bikeSelect'>
+<head>
+<!-- testing -->
+
+{% load staticfiles %}
+
+{% include 'bike_donations/dependencies.html' %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bike_donations/styles/selectStyles.css' %}">
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/app.js' %}"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+<!--Angular Below-->
+
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/services/boolService.js' %}"></script>
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/services/scrollService.js' %}"></script>
+
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/factories/componentOptionsFactory.js' %}"></script>
+
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/factories/BikeFactory.js' %}"></script>
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/controllers/BikesController.js' %}"></script>
+
+
+
+<script type = "text/javascript" src = "{% static 'bike_donations/angular/controllers/componentOptionsController.js' %}"></script>
+
+<title>{{request.session.selectionTitle}}</title>
+
+<style type="text/css" media="screen">
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+	<div id='controllerSelect' ng-controller="{{request.session.selection}}">
+	{% include 'bike_donations/sideBar.html' %}
+
+		<div id = "outerMain">
+			<div id = "header" class="row">
+
+				<h2 id="headerText" class="col-xs-8">{{request.session.selectionTitle}}</h2>
+				<h2 class="col-xs-4 text-right" id="headerLogout" ng-click="logout()">Logout</h2>
+			</div>
+
+			<h4 class="noBtmPad">
+				<span><i ng-if="nextName == 'bikeType' || currentPartial =='category'" class="fa fa-plus-square-o fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="currentPartial == 'item'" class="fa fa-tags fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="nextName == 'brand'" class="fa fa-trademark fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="nextName == 'cosmetic'" class="fa fa-diamond fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="nextName == 'frame'" class="fa fa-bicycle fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="nextName == 'features'" class="fa fa-cogs fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="nextName == 'quantity' || currentPartial == 'quantity'" class="fa fa-hashtag fa-3x titleIcon" aria-hidden="true"></i>
+				<i ng-if="nextName == 'confirm' || currentPartial == 'confirmation'" class="fa fa-sign-out fa-3x titleIcon" aria-hidden="true"></i>  </span>
+				  [[title]]</h4>
+			<form>
+				{% csrf_token %}
+				<div ng-view="">
+
+				</div>
+			</form>
+		</div> <!--closes outerMain-->
+	</div><!--closes controllerSelect-->
+</div> <!-- end of container -->
+<script>
+
+	function openNav() {
+		document.getElementById("bikeSideNav").style.width="300px";
+		document.getElementById("outerMain").style.marginLeft="300px";
+		document.getElementById("outerMain").style.paddingTop="0.75em";
+		document.getElementById("header").style.paddingTop="0.75em";
+		document.getElementById("header").style.paddingBottom="0.75em";
+		document.getElementById("headerText").style.padding="0.75em";
+		document.getElementById("headerLogout").style.padding="0.75em";
+		document.getElementById("hamburger").style.display="none";
+		document.getElementById("exout").style.display="block";
+		document.getElementById("toMenuATag").href="/menu/";
+		document.getElementById("toMenu").style.display="block";
+		document.getElementById("identify").style.display="block";
+
+		// var x = document.getElementsByClassName("fa");
+		// console.log("fa stuff", x);
+		// for(var i=0; i<x.length; i++){
+		// 	x[i].style.display="none";
+		// }
+		// var array = document.getElementsByClassName("kangroo");
+		// for (var y= 0;  y<array.length; y++) {
+		// 	array[y].style.display = "inline-block";
+		// }
+	}
+	function closeNav() {
+		document.getElementById("bikeSideNav").style.width="100px";
+		document.getElementById("outerMain").style.marginLeft="50px";
+		document.getElementById("outerMain").style.paddingTop="0";
+		document.getElementById("header").style.paddingTop="0";
+		document.getElementById("header").style.paddingBottom="0";
+		document.getElementById("headerText").style.padding="0";
+		document.getElementById("headerLogout").style.padding="0";
+		document.getElementById("hamburger").style.display="block";
+		document.getElementById("exout").style.display="none";
+		document.getElementById("toMenuATag").href="#";
+		document.getElementById("toMenu").style.display="none";
+		document.getElementById("identify").style.display="none";
+		// var array = document.getElementsByClassName("kangroo");
+		// for (var y= 0;  y<array.length; y++) {
+		// 	array[y].style.display = "none";
+		// }
+		// var x = document.getElementsByClassName("fa");
+		// for(var i=0; i<x.length; i++){
+		// 	x[i].style.display="inline-block";
+		// }
+	}
+</script>
+</body>
+</html>
