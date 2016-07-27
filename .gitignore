@@ -1,0 +1,9 @@
+# Django stuff:
+local_settings.py
+
+# virtualenv
+test/
+venv/
+ENV/
+
+*.pyc
