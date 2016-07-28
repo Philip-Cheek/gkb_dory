@@ -32,8 +32,12 @@
 			<img class="img-responsive pull-right" src="{% static 'bike_donations/resources/logoThing.jpg' %}" />
 		</div>
 		<div class="row">
-			<a href="/menu" class="btn col-xs-4 btn-lg" id="btn-back">Back to Menu</a>
-			<a href="/logout" class="btn col-xs-4 col-xs-offset-4 btn-lg">Logout</a>
+			<div class="col-xs-4">
+				<a href="/menu" class="btn btn-lg" id="btn-back">Back to Menu</a>
+			</div>
+			<div class="col-xs-4 col-xs-offset-4">
+				<a href="/logout" class="btn btn-lg" id="btn-back">Logout</a>
+			</div>
 		</div>
 		<div ng-controller = 'inventoryController'>
 			<form>

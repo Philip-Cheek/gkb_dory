@@ -117,4 +117,8 @@ angular.module('bikeSelect').controller('componentOptionsController', function($
 		})
 	};
 
+	$scope.logout = function() {
+		$window.location = '/logout'
+	}
+
 });
