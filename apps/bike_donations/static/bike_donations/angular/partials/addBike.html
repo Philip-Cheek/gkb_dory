@@ -1,10 +1,10 @@
 <div id="buttonBox" class="row" ng-if="nextName != 'confirm'">
 	<div class="col-xs-4">
-		<button id="btn-back" class="btn btn-lg" ng-click="backBtn()" ng-if="nextName != 'bikeType' && nextName !='confirm' && !editing">Back</button>
+		<button id="btn-back" class="btn" ng-click="backBtn()" ng-if="nextName != 'bikeType' && nextName !='confirm' && !editing">Back</button>
 	</div>
 	<div class="col-xs-4 pull-right">
-		<button id="btn-done" class="btn btn-lg pull-right" ng-click="doneBtn()" ng-if="complete && nextName != 'confirm'">Done</button>
-		<button id="btn-next" class="btn btn-lg" ng-click="nextBtn()" ng-if="selected==true && !editing">Next</button>
+		<button id="btn-done" class="btn pull-right" ng-click="doneBtn()" ng-if="complete && nextName != 'confirm'">Done</button>
+		<button id="btn-next" class="btn" ng-click="nextBtn()" ng-if="selected==true && !editing">Next</button>
 	</div>
 </div>
 	<div id="selectionDiv">
@@ -75,15 +75,15 @@
 		</table>
 		<div class="row" ng-if="!posted">
 			<div class="col-xs-6">
-				<button id="btn-cancel" class="col-xs-12 btn btn-lg" ng-click="restart()">Cancel</button>
+				<button id="btn-cancel" class="col-xs-12 btn" ng-click="restart()">Cancel</button>
 			</div>
 			<div class="col-xs-6 text-center">
-					<button id="btn-postBike" class="col-xs-12 btn btn-lg pull-right" ng-click="postBike()">Confirm</button>
+					<button id="btn-postBike" class="col-xs-12 btn pull-right" ng-click="postBike()">Confirm</button>
 			</div>
 		</div>
 		<div class="row text-center">
 			<div class="col-xs-6 col-xs-offset-3">
-				<img src="../static/bike_donations/resources/GKBwheel.gif" alt="riding a bike" ng-if="posted">
+				<img id="wheelGif" src="../static/bike_donations/resources/GKBwheel.gif" alt="riding a bike" ng-if="posted">
 				<h4 ng-if="error && !posted" class="text-danger" ng-bind="error"></h4>
 			</div>
 		</div>

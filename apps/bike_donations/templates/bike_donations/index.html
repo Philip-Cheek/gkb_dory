@@ -41,9 +41,10 @@
 	{% include 'bike_donations/sideBar.html' %}
 
 		<div id = "outerMain">
-			<div id = "header" class="row">
 
-				<h2 id="headerText" class="col-xs-8">{{request.session.selectionTitle}}</h2>
+			<div id = "header" class="row">
+				<a href="/menu" id="toMenuATag-xs" class="col-xs-1 pull-left"><img class="img-circle" src="{% static 'bike_donations/resources/bike_home.png' %}" />Menu</a>
+				<h2 id="headerText" class="col-xs-7">{{request.session.selectionTitle}}</h2>
 				<h2 class="col-xs-4 text-right" id="headerLogout" ng-click="logout()">Logout</h2>
 			</div>
 
@@ -57,7 +58,7 @@
 				<i ng-if="nextName == 'quantity' || currentPartial == 'quantity'" class="fa fa-hashtag fa-3x titleIcon" aria-hidden="true"></i>
 				<i ng-if="nextName == 'confirm' || currentPartial == 'confirmation'" class="fa fa-sign-out fa-3x titleIcon" aria-hidden="true"></i>  </span>
 				  [[title]]</h4>
-			<form>
+			<form id="selectionForm">
 				{% csrf_token %}
 				<div ng-view="">
 

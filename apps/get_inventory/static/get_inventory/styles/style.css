@@ -37,3 +37,27 @@
 #btn-delete:active {
 	background: #c9302c;
 }
+
+@media screen and (max-width: 420px){
+
+	#logoImg {
+		display: none;
+	}
+
+	#header-inv-page h2 {
+		width: 100%;
+		margin-top: 0px;
+		padding-bottom: 0px;
+	}
+
+	.container {
+		position: inherit;
+	}
+
+	img {
+		height: 50px;
+		width: 50px;
+	}
+
+
+}
