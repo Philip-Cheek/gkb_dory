@@ -1,11 +1,11 @@
 
 <div id="buttonBox" class="row">
 	<div class="col-xs-4">
-		<button id="btn-back" class="btn btn-lg" ng-click="backBtn()" ng-if="currentPartial != 'category' && currentPartial != 'confirmation' && !editing">Back</button>
+		<button id="btn-back" class="btn" ng-click="backBtn()" ng-if="currentPartial != 'category' && currentPartial != 'confirmation' && !editing">Back</button>
 	</div>
 	<div class="col-xs-4 pull-right">
-		<button id="btn-next" class="btn btn-lg pull-right" ng-click="nextBtn()" ng-if="nextButtonAppears && currentPartial != 'quantity' && !editing">Next</button>
-		<button id="btn-done" class="btn btn-lg pull-right" ng-click="doneBtn()" ng-if="currentPartial == 'quantity' || editing">Done</button>
+		<button id="btn-next" class="btn pull-right" ng-click="nextBtn()" ng-if="nextButtonAppears && currentPartial != 'quantity' && !editing">Next</button>
+		<button id="btn-done" class="btn pull-right" ng-click="doneBtn()" ng-if="currentPartial == 'quantity' || editing">Done</button>
 	</div>
 </div>
 <div id="selectionDiv">
@@ -53,10 +53,10 @@
 
 		<div class="row" ng-if="!posted">
 			<div class="col-xs-6">
-				<button id="btn-cancel" class="col-xs-12 btn btn-lg" ng-click="restart()">Cancel</button>
+				<button id="btn-cancel" class="col-xs-12 btn" ng-click="restart()">Cancel</button>
 			</div>
 			<div class="col-xs-6 text-center">
-					<button id="btn-postBike" class="col-xs-12 btn btn-lg pull-right" ng-click="postComponent()">Confirm</button>
+					<button id="btn-postBike" class="col-xs-12 btn pull-right" ng-click="postComponent()">Confirm</button>
 			</div>
 		</div>
 		<div class="row text-center">
