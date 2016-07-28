@@ -69,7 +69,11 @@
 				<p class="kangroo" ng-if="sideNavStatus">Confirmation</p>
 				<p class="kangroo" ng-if="sideNavStatusComp">Confirmation</p>
 			</div>
-
+			<div id="credit">
+				<h5 id="bike" class="col-xs-1"><img id="ninja" src="{% static 'bike_donations/resources/ninja.png' %}" alt="ninja" onclick="openNav()" ng-click="sideBarStatus(true)"></h5>
+				<p class="col-xs-11" ng-if="sideNavStatus">Created by graduates of Coding Dojo, San Jose, 2016</p>
+				<p class="col-xs-11" ng-if="sideNavStatusComp">Created by graduates of Coding Dojo, San Jose, 2016</p>
+			</div>
 		</div>
 
 	</div>
