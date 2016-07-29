@@ -5,8 +5,8 @@ import random
 from .api_errors import errorsDictionary
 
 class LightspeedApi(object):
-	acnt = ''
-	auth = ('', '')
+	acnt = '71541'
+	auth = ('6e55cf09dd9c55879563c9be562616ae7aa6867169cc615f7bf3e29a1c1bfd68', 'apikey')
 
 	def get_inventory(self):
 		url = 'https://api.merchantos.com/API/Account/'+self.acnt+'/Item.json'

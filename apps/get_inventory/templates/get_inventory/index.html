@@ -77,15 +77,17 @@
 						</tr>
 					</tbody>
 				</table>
-				<div class="row text-center">
-					<form>
-						<input type="submit" id="btn-delete" class="btn" ng-if="result && !archived" ng-click="deleteItem(result.itemID)" value="Delete from Inventory">
-					</form>
-				</div>
-				<div class="row text-center">
-					
-					<img ng-if="deleting" src="{% static 'bike_donations/resources/GKBwheel.gif' %}">
-				</div>
+				{% if request.user.username == 'Staff' %}
+					<div class="row text-center">
+						<form>
+							<input type="submit" id="btn-delete" class="btn" ng-if="result && !archived" ng-click="deleteItem(result.itemID)" value="Delete from Inventory">
+						</form>
+					</div>
+					<div class="row text-center">
+						
+						<img ng-if="deleting" src="{% static 'bike_donations/resources/GKBwheel.gif' %}">
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>
