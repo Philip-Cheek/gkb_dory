@@ -46,7 +46,7 @@ class LightspeedApi(object):
 	def create_item(self, description, price, username,quantity):
 		sku_chars = string.digits
 		sku = "4"
-		for _ in range(10):
+		for _ in range(11):
 			sku += random.choice(sku_chars)
 		url = 'https://api.merchantos.com/API/Account/'+self.acnt+'/Item.json'
 		pythonDictionary = {}
