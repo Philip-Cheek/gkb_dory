@@ -44,7 +44,7 @@
 				{% csrf_token %}
 				<div class="form-group">
 					<label for="customSku" class="control-label">Scan or type barcode ***Ignore the last digit***</label>
-					<input type="text" class="form-control" name="customSku" ng-model="item.sku" maxlength="12" autocomplete="off">
+					<input type="text" class="form-control" name="customSku" ng-model="item.sku" maxlength="13" autocomplete="off">
 				</div>
 				<div class="form-group text-center">
 					<button ng-click="getItem()" class="btn" id="btn-search">Search Inventory</button>

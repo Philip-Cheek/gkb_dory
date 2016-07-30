@@ -10,7 +10,7 @@ angular.module('gkbInv').controller('inventoryController', function($scope, $loc
 		$scope.notFound = "";
 		var sku = parseInt($scope.item.sku)
 		sku += ""
-		if (sku.length == 12 && !isNaN(sku)) {
+		if (sku.length == 13 && !isNaN(sku)) {
 			$scope.searching = true;
 			
 			inventoryFactory.getItem($scope.item.sku, function(data){

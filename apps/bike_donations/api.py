@@ -43,11 +43,29 @@ class LightspeedApi(object):
 
 		return finalResult
 
-	def create_item(self, description, price, username,quantity):
+	def create_sku(self):
 		sku_chars = string.digits
 		sku = "4"
+
 		for _ in range(11):
 			sku += random.choice(sku_chars)
+
+		check_digit = 0
+		for idx in range(len(sku)):
+			if idx % 2 == 0:
+				check_digit += int(sku[idx])
+			else:
+				check_digit += 3 * int(sku[idx])
+		check_digit = 10 - (check_digit % 10)
+		if check_digit == 10:
+			check_digit = 0
+		sku += str(check_digit)
+
+		return sku
+
+	def create_item(self, description, price, username,quantity):
+		sku = self.create_sku()
+
 		url = 'https://api.merchantos.com/API/Account/'+self.acnt+'/Item.json'
 		pythonDictionary = {}
 		pythonDictionary["description"] = description
@@ -73,9 +91,7 @@ class LightspeedApi(object):
 		#done adding tags == the good stuff
 		json_data = json.dumps(pythonDictionary)
 		response = requests.post(url, auth=self.auth, data=json_data)
-		print response.reason
-		print dir(response)
-		print ("Status code", response.status_code)
+		print pythonDictionary
 		if response.status_code != 200:
 			finalResult = {'status': errorsDictionary[response.status_code]}
 			return finalResult
