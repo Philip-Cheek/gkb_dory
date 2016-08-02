@@ -31,6 +31,9 @@ class Search(LoginRequiredMixin, View):
 			api = LightspeedApi()
 			item = api.get_item(form.cleaned_data['customSku'])
 			if item['status'] == 200:
+				### lightspeed api ###
+				# return JsonResponse({'status': True, 'item': item['content']}, safe=False)
+				### ###
 				return JsonResponse({'status': True, 'item': item['content']}, safe=False)
 			else:
 				return JsonResponse({'status': False, 'error': item['status']})

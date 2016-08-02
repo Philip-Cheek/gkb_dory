@@ -58,12 +58,15 @@
         <form class="centered" id="passwords" ng-if="loginSelection" action="{% url 'auth' %}" method="post">
           {% csrf_token %}
           <h3 class="centered" ng-bind="loginSelection"></h3>
-          <input type="hidden" name="userType" value="[[loginSelection]]" />
+          <h5 class="centered">Click Submit. No password required.</h5>
+          <input type="hidden" name="userType" value="[[loginSelection]]"/>
           <div class="input-group">
-            <input class="form-control input-lg" name="password" ng-model="secretWord" type="password" placeholder="Password" />
+            <input class="form-control input-lg" name="password" ng-model="secretWord" type="password" placeholder="No Password Required" />
+
             <div class="input-group-addon">
                 <input type="submit" id="submitPassword" class="btn btn-lg"></input>
             </div>
+
 
           </div>
 

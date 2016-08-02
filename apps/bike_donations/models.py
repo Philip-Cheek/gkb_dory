@@ -20,3 +20,9 @@ class Component(models.Model):
 	item = models.ForeignKey(ItemOption, null = True, blank=True)
 	price = models.DecimalField(max_digits=6, decimal_places = 2)
 
+class InventoryItem(models.Model):
+	description = models.CharField(max_length=150)
+	price = models.CharField(max_length=7)
+	customSku = models.CharField(max_length=13)
+	archived = models.BooleanField(default=False)
+

@@ -2,7 +2,9 @@ import requests
 import json
 import string
 import random
+import time
 from .api_errors import errorsDictionary
+from .models import InventoryItem
 
 class LightspeedApi(object):
 	acnt = ''
@@ -17,29 +19,54 @@ class LightspeedApi(object):
 	def get_item(self, customSku):
 		url = 'https://api.merchantos.com/API/Account/'+self.acnt+'/Item/'+customSku+'.json'
 
-		response = requests.get(url, auth=self.auth)
-		if response.status_code != 200:
-			if response.status_code == 404:
-				finalResult = {'status': 'Item could not be found'}
-			else:
-				finalResult = {'status': errorsDictionary[response.status_code]}
+
+		### used with lightspeed api ###
+		# response = requests.get(url, auth=self.auth)
+		# if response.status_code != 200:
+		# 	if response.status_code == 404:
+		# 		finalResult = {'status': 'Item could not be found'}
+		# 	else:
+		# 		finalResult = {'status': errorsDictionary[response.status_code]}
+		# else:
+		# 	finalResult = {'status': response.status_code, 'content':response.content}
+
+		### ###
+
+		fake_api_request_delay = time.sleep(random.random() * 2.5 + 0.5)
+
+		response = InventoryItem.objects.get(customSku=customSku)
+
+		if response is not None:
+			finalResult = {'status': 200, 'content': {'itemID': response.id, 'description':response.description, 'price': response.price, 'customSku': response.customSku, 'archived': response.archived}}
 		else:
-			finalResult = {'status': response.status_code, 'content':response.content}
+			finalResult = {'status': 'Item could not be found'}
 
 		return finalResult
 
 	def delete_item(self, id):
 		url = 'https://api.merchantos.com/API/Account/'+self.acnt+'/Item/'+id+'.json'
-		response = requests.delete(url, auth=self.auth)
+		
 
-		if response.status_code != 200:
-			print type(response.status_code)
-			if response.status_code == 404:
-				finalResult = {'status': 'Item could not be found'}
-			else:
-				finalResult = {'status': response.status_code, 'error': errorsDictionary[response.status_code]}
-		else:
-			finalResult = {'status': response.status_code, 'content':response.content}
+		
+
+		### used with lightspeed api ###
+		# response = requests.delete(url, auth=self.auth)
+		# if response.status_code != 200:
+		# 	print type(response.status_code)
+		# 	if response.status_code == 404:
+		# 		finalResult = {'status': 'Item could not be found'}
+		# 	else:
+		# 		finalResult = {'status': response.status_code, 'error': errorsDictionary[response.status_code]}
+		# else:
+		# 	finalResult = {'status': response.status_code, 'content':response.content}
+
+		###  ###
+
+		fake_api_request_delay = time.sleep(random.random() * 2.5 + 0.5)
+		response = InventoryItem.objects.get(id=id)
+		response.archived = True
+		response.save()
+		finalResult = {'status': 200}
 
 		return finalResult
 
@@ -89,13 +116,27 @@ class LightspeedApi(object):
 		pythonDictionary['Tags']['tag'] = username
 
 		#done adding tags == the good stuff
-		json_data = json.dumps(pythonDictionary)
-		response = requests.post(url, auth=self.auth, data=json_data)
-		print pythonDictionary
-		if response.status_code != 200:
-			finalResult = {'status': errorsDictionary[response.status_code]}
-			return finalResult
-		finalResult = {'status': response.status_code, 'bikeAdded': pythonDictionary}
-		print ("Here's the final result", finalResult)
-		# return pythonDictionary
+
+		### used with lightspeed api ###
+		# json_data = json.dumps(pythonDictionary)
+		# response = requests.post(url, auth=self.auth, data=json_data)
+		
+		# if response.status_code != 200:
+		# 	finalResult = {'status': errorsDictionary[response.status_code]}
+		# 	return finalResult
+
+		# finalResult = {'status': response.status_code, 'bikeAdded': pythonDictionary}
+		### ###
+
+		response = InventoryItem()
+		response.description = description
+		response.price = price
+		response.customSku = sku
+		response.save()
+
+		# random delay between ~0.5 and 3 seconds
+		fake_api_request_delay = time.sleep(random.random() * 2.5 + 0.5)
+
+		finalResult = {'status': 200, 'bikeAdded': pythonDictionary}
+		
 		return finalResult

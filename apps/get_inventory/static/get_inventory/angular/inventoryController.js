@@ -16,13 +16,21 @@ angular.module('gkbInv').controller('inventoryController', function($scope, $loc
 			inventoryFactory.getItem($scope.item.sku, function(data){
 				if (data.status == true) {
 					$scope.searching = false;
-					result = JSON.parse(data.item)
-					$scope.result = result.Item
-					$scope.price = $scope.result.Prices.ItemPrice[0].amount
+					
+
+					// lightspeed api
+					// result = JSON.parse(data.item)
+					// $scope.result = result.Item
+					// $scope.price = $scope.result.Prices.ItemPrice[0].amount
+
+
+					$scope.result = data.item
+					$scope.price = $scope.result.price
 					if ($scope.price == '0') {
 						$scope.price = 'Program'
 					}
-					if ($scope.result.archived == "true") {
+					// if ($scope.result.archived == "true") {
+					if ($scope.result.archived == true) {
 						$scope.archived = true;
 						
 					}
