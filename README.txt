@@ -1,4 +1,6 @@
-SCRUM project completed by recent graduates of Coding Dojo, San Jose.
+SCRUM project completed on behalf of the Good Karma Bikes organization. (Some code/details altered for security and privacy reasons). 
+
+To demo:
 
 1) 'cd' into the project directory
 2) 'virtualenv venv' in terminal to create virtual environment
